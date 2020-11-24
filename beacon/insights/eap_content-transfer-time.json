@@ -1,0 +1,57 @@
+{
+  "title": "Content Transfer Time",
+  "category": "INS_CAT_OPERATIONS",
+  "severity": "INS_SEV_INFORMATIONAL",
+  "appNames": [],
+  "appComponents": [],
+  "metrics": [
+    {
+      "measurement": "monitor",
+      "tags": [
+        {
+          "key": "source",
+          "values": [
+            "EAP Auction App"
+          ]
+        }
+      ],
+      "field": "contentTransferMs",
+      "function": "max",
+      "metricName": "EAP"
+    },
+    {
+      "measurement": "monitor",
+      "tags": [
+        {
+          "key": "source",
+          "values": [
+            "Direct HTTPS Auction",
+            "Direct Auction"
+          ]
+        }
+      ],
+      "field": "contentTransferMs",
+      "function": "max",
+      "metricName": "Direct"
+    },
+    {
+      "measurement": "monitor",
+      "tags": [
+        {
+          "key": "source",
+          "values": [
+            "EAP CloudFront"
+          ]
+        }
+      ],
+      "field": "contentTransferMs",
+      "function": "max",
+      "metricName": "EAP CloudFront"
+    }
+  ],
+  "visualizationType": "VISUALIZATION_TYPE_LINE",
+  "period": "1d",
+  "analysis": null,
+  "healthStatus": "NONE",
+  "healthStatusReason": ""
+}

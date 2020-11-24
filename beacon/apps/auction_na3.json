@@ -1,0 +1,43 @@
+{
+  "action": "deploy",
+  "declaration": [
+    {
+      "metadata": {
+        "version": "v1"
+      },
+      "application": {
+        "name": "Azure East US (na3)",
+        "description": "",
+        "labels": {
+          "latitude": "37.3719",
+          "location": "Azure - East US",
+          "longitude": "-79.8164"
+        },
+        "dependencies": [],
+        "metrics": [
+          {
+            "measurement": "monitor",
+            "tags": {
+              "source": "na3-auction_health-monitor"
+            },
+            "field": "healthStatus",
+            "healthSettings": {
+              "aggregation": "",
+              "timeRange": 1,
+              "operator": "",
+              "criticalThreshold": "",
+              "warningThreshold": "",
+              "noMetricData": "KeepState"
+            },
+            "name": "healthStatus"
+          }
+        ],
+        "healthSourceSettings": {
+          "metricsHealthAggregation": "WorstOf",
+          "dependencyHealthAggregation": "WorstOf"
+        },
+        "insights": []
+      }
+    }
+  ]
+}

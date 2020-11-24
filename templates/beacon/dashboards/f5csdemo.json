@@ -1,0 +1,168 @@
+{
+  "id": "162258",
+  "name": "F5CSDEMO",
+  "description": "",
+  "shared": false,
+  "widgets": [
+    {
+      "type": "App Map",
+      "groupBy": [],
+      "chartType": "",
+      "appID": "{{ beacon_apps["F5CSDemo"] }}",
+      "insightName": "",
+      "metadata": {
+        "h": "2",
+        "i": "static-app-map-widget_drop_0_1",
+        "id": "static-app-map-widget_drop_0_1",
+        "maxH": "4",
+        "minH": "2",
+        "minW": "4",
+        "w": "12",
+        "x": "0",
+        "y": "0"
+      },
+      "i": "static-app-map-widget_drop_0_1",
+      "id": "static-app-map-widget_drop_0_1",
+      "x": 0,
+      "y": 0,
+      "w": 12,
+      "h": 2,
+      "minH": 2,
+      "minW": 4,
+      "maxH": 4,
+      "imageAltText": {
+        "id": "Beacon.DashboardManagement.DashboardLayout.StaticAppMapWidgetLabel",
+        "defaultMessage": "Application Map"
+      },
+      "imageTitle": {
+        "id": "Beacon.DashboardManagement.DashboardLayout.StaticAppMapWidgetLabel",
+        "defaultMessage": "Application Map"
+      },
+      "title": {
+        "id": "Beacon.DashboardManagement.DashboardLayout.StaticAppMapWidgetLabel",
+        "defaultMessage": "Application Map"
+      }
+    },
+    {
+      "type": "Custom Insight",
+      "groupBy": [],
+      "chartType": "",
+      "appID": "",
+      "insightName": "EAP System Info",
+      "metadata": {
+        "h": "2",
+        "i": "custom-insight-widget_drop_1_2",
+        "id": "custom-insight-widget_drop_1_2",
+        "maxH": "4",
+        "minH": "2",
+        "minW": "4",
+        "w": "4",
+        "x": "0",
+        "y": "2"
+      },
+      "i": "custom-insight-widget_drop_1_2",
+      "id": "custom-insight-widget_drop_1_2",
+      "x": 0,
+      "y": 2,
+      "w": 4,
+      "h": 2,
+      "minH": 2,
+      "minW": 4,
+      "maxH": 4,
+      "imageAltText": {
+        "id": "Beacon.DashboardManagement.DashboardLayout.CustomInsightWidgetLabel",
+        "defaultMessage": "Insight"
+      },
+      "imageTitle": {
+        "id": "Beacon.DashboardManagement.DashboardLayout.CustomInsightWidgetLabel",
+        "defaultMessage": "Insight"
+      },
+      "title": {
+        "id": "Beacon.DashboardManagement.DashboardLayout.CustomInsightWidgetLabel",
+        "defaultMessage": "Insight"
+      }
+    },
+    {
+      "type": "Custom Insight",
+      "groupBy": [],
+      "chartType": "",
+      "appID": "",
+      "insightName": "EAP Gateway Requests",
+      "metadata": {
+        "h": "2",
+        "i": "custom-insight-widget_drop_2_3",
+        "id": "custom-insight-widget_drop_2_3",
+        "maxH": "4",
+        "minH": "2",
+        "minW": "4",
+        "w": "4",
+        "x": "4",
+        "y": "2"
+      },
+      "i": "custom-insight-widget_drop_2_3",
+      "id": "custom-insight-widget_drop_2_3",
+      "x": 4,
+      "y": 2,
+      "w": 4,
+      "h": 2,
+      "minH": 2,
+      "minW": 4,
+      "maxH": 4,
+      "imageAltText": {
+        "id": "Beacon.DashboardManagement.DashboardLayout.CustomInsightWidgetLabel",
+        "defaultMessage": "Insight"
+      },
+      "imageTitle": {
+        "id": "Beacon.DashboardManagement.DashboardLayout.CustomInsightWidgetLabel",
+        "defaultMessage": "Insight"
+      },
+      "title": {
+        "id": "Beacon.DashboardManagement.DashboardLayout.CustomInsightWidgetLabel",
+        "defaultMessage": "Insight"
+      }
+    },
+    {
+      "type": "Custom Insight",
+      "groupBy": [],
+      "chartType": "",
+      "appID": "",
+      "insightName": "Content Transfer Time",
+      "metadata": {
+        "h": "2",
+        "i": "custom-insight-widget_drop_3_4",
+        "id": "custom-insight-widget_drop_3_4",
+        "maxH": "4",
+        "minH": "2",
+        "minW": "4",
+        "w": "4",
+        "x": "8",
+        "y": "2"
+      },
+      "i": "custom-insight-widget_drop_3_4",
+      "id": "custom-insight-widget_drop_3_4",
+      "x": 8,
+      "y": 2,
+      "w": 4,
+      "h": 2,
+      "minH": 2,
+      "minW": 4,
+      "maxH": 4,
+      "imageAltText": {
+        "id": "Beacon.DashboardManagement.DashboardLayout.CustomInsightWidgetLabel",
+        "defaultMessage": "Insight"
+      },
+      "imageTitle": {
+        "id": "Beacon.DashboardManagement.DashboardLayout.CustomInsightWidgetLabel",
+        "defaultMessage": "Insight"
+      },
+      "title": {
+        "id": "Beacon.DashboardManagement.DashboardLayout.CustomInsightWidgetLabel",
+        "defaultMessage": "Insight"
+      }
+    }
+  ],
+  "createTime": "2020-11-23T15:26:13.479305Z",
+  "updateTime": "2020-11-24T19:02:30.120666Z",
+  "labels": {},
+  "appId": 162258
+}

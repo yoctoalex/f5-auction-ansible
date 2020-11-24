@@ -1,0 +1,84 @@
+{
+  "title": "RAM Usage",
+  "category": "INS_CAT_OPERATIONS",
+  "severity": "INS_SEV_NONE",
+  "appNames": [],
+  "appComponents": [],
+  "metrics": [
+    {
+      "measurement": "mem",
+      "tags": [
+        {
+          "key": "internal_name",
+          "values": [
+            "au-auction"
+          ]
+        }
+      ],
+      "field": "used_percent",
+      "function": "max",
+      "metricName": "au-auction"
+    },
+    {
+      "measurement": "mem",
+      "tags": [
+        {
+          "key": "internal_name",
+          "values": [
+            "na1-auction"
+          ]
+        }
+      ],
+      "field": "used_percent",
+      "function": "max",
+      "metricName": "na1-auction"
+    },
+    {
+      "measurement": "mem",
+      "tags": [
+        {
+          "key": "internal_name",
+          "values": [
+            "na2-auction"
+          ]
+        }
+      ],
+      "field": "used_percent",
+      "function": "max",
+      "metricName": "na2-auction"
+    },
+    {
+      "measurement": "mem",
+      "tags": [
+        {
+          "key": "internal_name",
+          "values": [
+            "na3-auction"
+          ]
+        }
+      ],
+      "field": "used_percent",
+      "function": "max",
+      "metricName": "na3-auction"
+    },
+    {
+      "measurement": "mem",
+      "tags": [
+        {
+          "key": "host",
+          "values": [
+            "eu1"
+          ]
+        }
+      ],
+      "field": "used_percent",
+      "function": "max",
+      "metricName": "eu1-auction"
+    }
+  ],
+  "visualizationType": "VISUALIZATION_TYPE_LINE",
+  "period": "1d",
+  "analysis": null,
+  "healthStatus": "NONE",
+  "healthStatusReason": ""
+}

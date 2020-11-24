@@ -1,0 +1,152 @@
+- name: Configure Beacon
+  hosts: beacon
+  gather_facts: false
+  connection: local
+
+  vars:
+    csAPI: "https://api.cloudservices.f5.com"
+    ingestAPI: "https://ingestion.ovr.prd.f5aas.com:50443"
+
+  tasks:
+    - name: Get Beacon Auth
+      uri:
+        url: "{{csAPI}}/v1/svc-auth/login"
+        method: POST
+        body_format: json
+        body:
+          username: "{{ beacon_un }}"
+          password: "{{ beacon_pw }}"
+      register: authtoken
+      delegate_to: localhost
+
+    - name: Get Dashboards
+      uri:
+        url: "{{csAPI}}/beacon/v1/dashboards"
+        method: GET
+        headers:
+          Content-Type: application/json
+          Authorization: "Bearer {{ authtoken.json.access_token }}"
+          X-F5aas-Preferred-Account-Id: "{{ beacon_acct }}"
+      register: beacon_dashboards_response
+      delegate_to: localhost
+
+    - name: Delete Dashboards
+      uri:
+        url: "{{csAPI}}/beacon/v1/dashboards/{{ item.id }}"
+        method: DELETE
+        headers:
+          Content-Type: application/json
+          Authorization: "Bearer {{ authtoken.json.access_token }}"
+          X-F5aas-Preferred-Account-Id: "{{ beacon_acct }}"
+      delegate_to: localhost
+      loop: "{{ beacon_dashboards_response.json.dashboards }}"
+
+    - name: Get Beacon Apps
+      uri:
+        url: "{{csAPI}}/beacon/v1/applications"
+        method: GET
+        headers:
+          Content-Type: application/json
+          Authorization: "Bearer {{ authtoken.json.access_token }}"
+          X-F5aas-Preferred-Account-Id: "{{ beacon_acct }}"
+      register: beacon_apps_response
+      delegate_to: localhost
+
+    - name: Delete Beacon Apps
+      uri:
+        url: "{{csAPI}}/beacon/v1/applications/{{ item.id }}"
+        method: DELETE
+        headers:
+          Content-Type: application/json
+          Authorization: "Bearer {{ authtoken.json.access_token }}"
+          X-F5aas-Preferred-Account-Id: "{{ beacon_acct }}"
+      delegate_to: localhost
+      loop: "{{ beacon_apps_response.json.apps }}"
+
+    - name: Get Monitors
+      uri:
+        url: "{{csAPI}}/beacon/v1/monitors"
+        method: GET
+        headers:
+          Content-Type: application/json
+          Authorization: "Bearer {{ authtoken.json.access_token }}"
+          X-F5aas-Preferred-Account-Id: "{{ beacon_acct }}"
+      register: beacon_monitors_response
+      delegate_to: localhost
+
+    - name: Delete Monitors
+      uri:
+        url: "{{csAPI}}/beacon/v1/monitors/{{ item.id }}"
+        method: DELETE
+        headers:
+          Content-Type: application/json
+          Authorization: "Bearer {{ authtoken.json.access_token }}"
+          X-F5aas-Preferred-Account-Id: "{{ beacon_acct }}"
+      delegate_to: localhost
+      loop: "{{ beacon_monitors_response.json.monitors }}"
+
+    - name: Get Sources
+      uri:
+        url: "{{csAPI}}/beacon/v1/sources"
+        method: GET
+        headers:
+          Content-Type: application/json
+          Authorization: "Bearer {{ authtoken.json.access_token }}"
+          X-F5aas-Preferred-Account-Id: "{{ beacon_acct }}"
+      register: beacon_sources_response
+      delegate_to: localhost
+
+    - name: Delete Sources
+      uri:
+        url: "{{csAPI}}/beacon/v1/sources/{{ item.type }}/{{ item.name | urlencode() }}"
+        method: DELETE
+        headers:
+          Content-Type: application/json
+          Authorization: "Bearer {{ authtoken.json.access_token }}"
+          X-F5aas-Preferred-Account-Id: "{{ beacon_acct }}"
+      delegate_to: localhost
+      loop: "{{ beacon_sources_response.json.sources }}"
+
+    - name: Get Ingest Tokens
+      uri:
+        url: "{{csAPI}}/beacon/v1/telemetry-token"
+        method: GET
+        headers:
+          Content-Type: application/json
+          Authorization: "Bearer {{ authtoken.json.access_token }}"
+          X-F5aas-Preferred-Account-Id: "{{ beacon_acct }}"
+      register: beacon_tokens_response
+      delegate_to: localhost
+
+    - name: Delete Ingest Tokens
+      uri:
+        url: "{{csAPI}}/beacon/v1/telemetry-token/{{ item.name | urlencode() }}"
+        method: DELETE
+        headers:
+          Content-Type: application/json
+          Authorization: "Bearer {{ authtoken.json.access_token }}"
+          X-F5aas-Preferred-Account-Id: "{{ beacon_acct }}"
+      delegate_to: localhost
+      loop: "{{ beacon_tokens_response.json.tokens }}"
+
+    - name: Get Insights
+      uri:
+        url: "{{csAPI}}/beacon/v1/insights"
+        method: GET
+        headers:
+          Content-Type: application/json
+          Authorization: "Bearer {{ authtoken.json.access_token }}"
+          X-F5aas-Preferred-Account-Id: "{{ beacon_acct }}"
+      register: beacon_insights_response
+      delegate_to: localhost
+
+    - name: Delete Insights
+      uri:
+        url: "{{csAPI}}/beacon/v1/insights/{{ item.title | urlencode() }}"
+        method: DELETE
+        headers:
+          Content-Type: application/json
+          Authorization: "Bearer {{ authtoken.json.access_token }}"
+          X-F5aas-Preferred-Account-Id: "{{ beacon_acct }}"
+      delegate_to: localhost
+      loop: "{{ beacon_insights_response.json.insights }}"

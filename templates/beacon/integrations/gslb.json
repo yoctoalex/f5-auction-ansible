@@ -1,0 +1,15 @@
+{
+  "name": "GSLB Monitor",
+  "description": "Auto-generated for GSLB integration",
+  "followRedirects": false,
+  "url": "http://subscription-service.c1.us-east-1.aws.cp.ovr.prd.f5aas.com/v1/svc-subscription/subscriptions?catalogId=c-aaQnOrPjGu&accountId={{ beacon_acct }}&service_type=gslb",
+  "method": "GET",
+  "interval": 30,
+  "type": "MONITOR_TYPE_DELEGATE_TRANSFORM",
+  "transformUrl": "https://lambda.ovr.prd.f5aas.com/lambda/gslb-transform",
+  "requestHeaders": "Grpc-Metadata-X-F5aas-Account-Id-Role: {{ beacon_acct }}:owner, Grpc-Metadata-X-F5aas-User-Id: {{ user_id }}",
+  "requestHeaderPairs": [],
+  "requestBody": "",
+  "responseTimeout": 60,
+  "transformHeaders": "Content-Type: application/json"
+}

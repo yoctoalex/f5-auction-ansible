@@ -1,0 +1,28 @@
+{
+  "title": "EAP Gateway Requests",
+  "category": "INS_CAT_SECURITY",
+  "severity": "INS_SEV_INFORMATIONAL",
+  "appNames": [],
+  "appComponents": [],
+  "metrics": [
+    {
+      "measurement": "nginx",
+      "tags": [
+        {
+          "key": "host",
+          "values": [
+            "na2"
+          ]
+        }
+      ],
+      "field": "requests_diff",
+      "function": "max",
+      "metricName": "eap-auction"
+    }
+  ],
+  "visualizationType": "VISUALIZATION_TYPE_STACKED_AREA",
+  "period": "1d",
+  "analysis": null,
+  "healthStatus": "NONE",
+  "healthStatusReason": ""
+}

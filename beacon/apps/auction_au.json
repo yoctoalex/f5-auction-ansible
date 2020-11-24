@@ -1,0 +1,43 @@
+{
+  "action": "deploy",
+  "declaration": [
+    {
+      "metadata": {
+        "version": "v1"
+      },
+      "application": {
+        "name": "AWS ap-southeast-2 (au)",
+        "description": "",
+        "labels": {
+          "latitude": "-33.86",
+          "location": "AWS - Asia Pacific (Sydney)",
+          "longitude": "151.2"
+        },
+        "dependencies": [],
+        "metrics": [
+          {
+            "measurement": "monitor",
+            "tags": {
+              "source": "au-auction_health-monitor"
+            },
+            "field": "healthStatus",
+            "healthSettings": {
+              "aggregation": "",
+              "timeRange": 1,
+              "operator": "",
+              "criticalThreshold": "",
+              "warningThreshold": "",
+              "noMetricData": "KeepState"
+            },
+            "name": "healthStatus"
+          }
+        ],
+        "healthSourceSettings": {
+          "metricsHealthAggregation": "WorstOf",
+          "dependencyHealthAggregation": "WorstOf"
+        },
+        "insights": []
+      }
+    }
+  ]
+}

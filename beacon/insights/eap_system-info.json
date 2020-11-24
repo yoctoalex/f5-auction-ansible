@@ -1,0 +1,48 @@
+{
+  "title": "EAP System Info",
+  "category": "INS_CAT_OPERATIONS",
+  "severity": "INS_SEV_NONE",
+  "appNames": [],
+  "appComponents": [],
+  "metrics": [
+    {
+      "measurement": "cpu",
+      "tags": [
+        {
+          "key": "cpu",
+          "values": [
+            "cpu-total"
+          ]
+        },
+        {
+          "key": "internal_name",
+          "values": [
+            "na2-auction"
+          ]
+        }
+      ],
+      "field": "usage_system",
+      "function": "max",
+      "metricName": "CPU"
+    },
+    {
+      "measurement": "mem",
+      "tags": [
+        {
+          "key": "internal_name",
+          "values": [
+            "na2-auction"
+          ]
+        }
+      ],
+      "field": "used_percent",
+      "function": "max",
+      "metricName": "RAM"
+    }
+  ],
+  "visualizationType": "VISUALIZATION_TYPE_LINE",
+  "period": "1d",
+  "analysis": null,
+  "healthStatus": "NONE",
+  "healthStatusReason": ""
+}

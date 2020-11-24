@@ -1,0 +1,43 @@
+{
+  "action": "deploy",
+  "declaration": [
+    {
+      "metadata": {
+        "version": "v1"
+      },
+      "application": {
+        "name": "AWS us-east-1 (na1)",
+        "description": "",
+        "labels": {
+          "latitude": "38.13",
+          "location": "AWS - US East (N. Virginia)",
+          "longitude": "-78.45"
+        },
+        "dependencies": [],
+        "metrics": [
+          {
+            "measurement": "monitor",
+            "tags": {
+              "source": "na1-auction_health-monitor"
+            },
+            "field": "healthStatus",
+            "healthSettings": {
+              "aggregation": "",
+              "timeRange": 1,
+              "operator": "",
+              "criticalThreshold": "",
+              "warningThreshold": "",
+              "noMetricData": "KeepState"
+            },
+            "name": "healthStatus"
+          }
+        ],
+        "healthSourceSettings": {
+          "metricsHealthAggregation": "WorstOf",
+          "dependencyHealthAggregation": "WorstOf"
+        },
+        "insights": []
+      }
+    }
+  ]
+}

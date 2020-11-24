@@ -1,0 +1,86 @@
+{
+  "title": "MySQL Queries",
+  "category": "INS_CAT_OPERATIONS",
+  "severity": "INS_SEV_INFORMATIONAL",
+  "appNames": [],
+  "appComponents": [],
+  "builtIn": false,
+  "query": "",
+  "metrics": [
+    {
+      "measurement": "mysql",
+      "tags": [
+        {
+          "key": "host",
+          "values": [
+            "au"
+          ]
+        }
+      ],
+      "field": "queries_diff",
+      "function": "max",
+      "metricName": "au-auction"
+    },
+    {
+      "measurement": "mysql",
+      "tags": [
+        {
+          "key": "host",
+          "values": [
+            "na2"
+          ]
+        }
+      ],
+      "field": "queries_diff",
+      "function": "max",
+      "metricName": "na2-auction"
+    },
+    {
+      "measurement": "mysql",
+      "tags": [
+        {
+          "key": "host",
+          "values": [
+            "na1"
+          ]
+        }
+      ],
+      "field": "queries_diff",
+      "function": "max",
+      "metricName": "na1-auction"
+    },
+    {
+      "measurement": "mysql",
+      "tags": [
+        {
+          "key": "host",
+          "values": [
+            "na3"
+          ]
+        }
+      ],
+      "field": "queries_diff",
+      "function": "max",
+      "metricName": "na3-auction"
+    },
+    {
+      "measurement": "mysql",
+      "tags": [
+        {
+          "key": "host",
+          "values": [
+            "eu1"
+          ]
+        }
+      ],
+      "field": "queries_diff",
+      "function": "max",
+      "metricName": "eu1-auction"
+    }
+  ],
+  "visualizationType": "VISUALIZATION_TYPE_STACKED_AREA",
+  "period": "1d",
+  "analysis": null,
+  "healthStatus": "NONE",
+  "healthStatusReason": ""
+}

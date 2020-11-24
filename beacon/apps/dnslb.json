@@ -1,0 +1,230 @@
+{
+  "action": "deploy",
+  "declaration": [
+    {
+      "metadata": {
+        "version": "v1"
+      },
+      "application": {
+        "name": "DNS Load Balancer",
+        "description": "",
+        "labels": {},
+        "dependencies": [
+          {
+            "name": "na1-auction",
+            "description": "",
+            "labels": {},
+            "dependencies": [],
+            "metrics": [
+              {
+                "measurement": "monitor",
+                "tags": {
+                  "source": "na1-auction_http-health-monitor"
+                },
+                "field": "healthStatus",
+                "healthSettings": {
+                  "aggregation": "",
+                  "timeRange": 1,
+                  "operator": "",
+                  "criticalThreshold": "",
+                  "warningThreshold": "",
+                  "noMetricData": "KeepState"
+                },
+                "name": "healthStatus"
+              }
+            ],
+            "healthSourceSettings": {
+              "metricsHealthAggregation": "WorstOf",
+              "dependencyHealthAggregation": "WorstOf"
+            },
+            "insights": []
+          },
+          {
+            "name": "na2-auction",
+            "description": "",
+            "labels": {},
+            "dependencies": [],
+            "metrics": [
+              {
+                "measurement": "monitor",
+                "tags": {
+                  "source": "na2-auction_http-health-monitor"
+                },
+                "field": "healthStatus",
+                "healthSettings": {
+                  "aggregation": "",
+                  "timeRange": 1,
+                  "operator": "",
+                  "criticalThreshold": "",
+                  "warningThreshold": "",
+                  "noMetricData": "KeepState"
+                },
+                "name": "healthStatus"
+              }
+            ],
+            "healthSourceSettings": {
+              "metricsHealthAggregation": "WorstOf",
+              "dependencyHealthAggregation": "WorstOf"
+            },
+            "insights": []
+          },
+          {
+            "name": "na3-auction",
+            "description": "",
+            "labels": {},
+            "dependencies": [],
+            "metrics": [
+              {
+                "measurement": "monitor",
+                "tags": {
+                  "source": "na3-auction_http-health-monitor"
+                },
+                "field": "healthStatus",
+                "healthSettings": {
+                  "aggregation": "",
+                  "timeRange": 1,
+                  "operator": "",
+                  "criticalThreshold": "",
+                  "warningThreshold": "",
+                  "noMetricData": "KeepState"
+                },
+                "name": "healthStatus"
+              }
+            ],
+            "healthSourceSettings": {
+              "metricsHealthAggregation": "WorstOf",
+              "dependencyHealthAggregation": "WorstOf"
+            },
+            "insights": []
+          },
+          {
+            "name": "na4-auction",
+            "description": "",
+            "labels": {},
+            "dependencies": [],
+            "metrics": [
+              {
+                "measurement": "monitor",
+                "tags": {
+                  "source": "big-ip_http-health-monitor"
+                },
+                "field": "healthStatus",
+                "healthSettings": {
+                  "aggregation": "",
+                  "timeRange": 1,
+                  "operator": "",
+                  "criticalThreshold": "",
+                  "warningThreshold": "",
+                  "noMetricData": "KeepState"
+                },
+                "name": "healthStatus"
+              }
+            ],
+            "healthSourceSettings": {
+              "metricsHealthAggregation": "WorstOf",
+              "dependencyHealthAggregation": "WorstOf"
+            },
+            "insights": []
+          },
+          {
+            "name": "eu1-auction",
+            "description": "",
+            "labels": {},
+            "dependencies": [],
+            "metrics": [
+              {
+                "measurement": "monitor",
+                "tags": {
+                  "source": "eu1-auction_http-health-monitor"
+                },
+                "field": "healthStatus",
+                "healthSettings": {
+                  "aggregation": "",
+                  "timeRange": 1,
+                  "operator": "",
+                  "criticalThreshold": "",
+                  "warningThreshold": "",
+                  "noMetricData": "KeepState"
+                },
+                "name": "healthStatus"
+              }
+            ],
+            "healthSourceSettings": {
+              "metricsHealthAggregation": "WorstOf",
+              "dependencyHealthAggregation": "WorstOf"
+            },
+            "insights": []
+          },
+          {
+            "name": "au-auction",
+            "description": "",
+            "labels": {},
+            "dependencies": [],
+            "metrics": [
+              {
+                "measurement": "monitor",
+                "tags": {
+                  "source": "au-auction_http-health-monitor"
+                },
+                "field": "healthStatus",
+                "healthSettings": {
+                  "aggregation": "",
+                  "timeRange": 1,
+                  "operator": "",
+                  "criticalThreshold": "",
+                  "warningThreshold": "",
+                  "noMetricData": "KeepState"
+                },
+                "name": "healthStatus"
+              }
+            ],
+            "healthSourceSettings": {
+              "metricsHealthAggregation": "WorstOf",
+              "dependencyHealthAggregation": "WorstOf"
+            },
+            "insights": []
+          }
+        ],
+        "metrics": [
+          {
+            "measurement": "dns-monitor",
+            "tags": {
+              "source": "auction_dns-health-monitor"
+            },
+            "field": "healthStatus",
+            "healthSettings": {
+              "aggregation": "",
+              "timeRange": 1,
+              "operator": "",
+              "criticalThreshold": "",
+              "warningThreshold": "",
+              "noMetricData": "KeepState"
+            },
+            "name": "healthStatus"
+          },
+          {
+            "measurement": "monitor",
+            "tags": {
+              "source": "auction_http-health-monitor"
+            },
+            "field": "healthStatus",
+            "healthSettings": {
+              "aggregation": "",
+              "timeRange": 1,
+              "operator": "",
+              "criticalThreshold": "",
+              "warningThreshold": "",
+              "noMetricData": "KeepState"
+            },
+            "name": "healthStatus-1"
+          }
+        ],
+        "healthSourceSettings": {
+          "metricsHealthAggregation": "WorstOf",
+          "dependencyHealthAggregation": "WorstOf"
+        },
+        "insights": []
+      }
+    }
+  ]
+}

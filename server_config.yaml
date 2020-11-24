@@ -1,0 +1,111 @@
+- name: Deploy Auction App
+  hosts: auction
+  gather_facts: false
+
+  vars_files:
+    - vars.yaml
+
+  tasks:
+    - name: Wait for VMs to be online
+      ansible.builtin.wait_for:
+        port: 22
+        delay: 5
+        timeout: 300
+
+    - name: Install a list of packages
+      apt:
+        pkg:
+          - containerd
+          - docker.io
+          - python3-pip
+          - docker-compose
+        update_cache: yes
+      become: yes
+
+    - pip:
+        name: docker
+        executable: pip3
+      become: true
+
+    - pip:
+        name: docker-compose
+        executable: pip3
+      become: true
+
+    - name: Copy app files
+      synchronize:
+        src: ./app/
+        dest: /home/ubuntu/app/
+      become: yes
+
+    - name: Ensures /home/ubuntu/telegraf dir exists
+      file: path=/home/ubuntu/telegraf state=directory
+
+    - name: Set templatized Telegraf configuration
+      template:
+        src: "./templates/tgbase.conf"
+        dest: "/home/ubuntu/telegraf/telegraf.conf"
+        force: yes
+      become: yes
+
+    - name: Ensures /home/ubuntu/telegraf/telegraf.d dir exists
+      file: path=/home/ubuntu/telegraf/telegraf.d state=directory
+
+    - name: Set templatized Telegraf plugins
+      template:
+        src: "{{ item }}"
+        dest: "/home/ubuntu/telegraf/telegraf.d/{{ item.split('/')[-1] }}"
+        force: yes
+      become: yes
+      loop: "{{ lookup('fileglob', 'templates/tg_plugins/*', wantlist=True) }}"
+
+    - name: Enable Ubuntu to manage docker
+      shell: usermod -aG docker ubuntu
+      become: yes
+
+    - name: Log into private registry and force re-authorization
+      community.general.docker_login:
+        registry_url: "{{ docker_registry }}"
+        username: "{{ docker_user }}"
+        password: "{{ docker_pass }}"
+        reauthorize: yes
+      become: yes
+
+    - name: Create and start demo app services
+      community.general.docker_compose:
+        project_src: /home/ubuntu/app/
+        remove_orphans: yes
+        recreate: always
+        pull: yes
+        nocache: yes
+        files:
+          - docker-compose.yaml
+      environment:
+        DOCKER_REGISTRY: "{{ docker_registry }}"
+        REGION: "{{ inventory_hostname }}"
+        MYSQL_PASS: "{{ mysql_pass }}"
+      become: true
+
+    - name: Find MySQL Container
+      shell: "docker ps | grep 'mysql' | awk '{ print $1 }'"
+      register: result
+      until: result.rc == 0
+      retries: 20
+      delay: 3
+      become: true
+
+    - name: Get mysql container id
+      set_fact:
+        mysql_container_id: "{{ result.stdout }}"
+
+    - name: Wait for MySQL
+      shell: "docker exec {{ mysql_container_id }} mysqladmin ping -u{{ mysql_user|quote }} -p{{ mysql_pass|quote }}"
+      register: result
+      until: result.rc == 0
+      retries: 20
+      delay: 3
+      become: true
+
+    - name: Restore MySQL database
+      shell: "cat /home/ubuntu/app/dump.sql | docker exec -i {{ mysql_container_id }} /usr/bin/mysql -u{{ mysql_user|quote }} -p{{ mysql_pass|quote }}"
+      become: true

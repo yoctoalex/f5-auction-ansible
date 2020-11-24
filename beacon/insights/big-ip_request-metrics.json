@@ -1,0 +1,56 @@
+{
+  "title": "Big-IP Request Metrics",
+  "category": "INS_CAT_OPERATIONS",
+  "severity": "INS_SEV_NONE",
+  "appNames": [],
+  "appComponents": [],
+  "metrics": [
+    {
+      "measurement": "monitor",
+      "tags": [
+        {
+          "key": "source",
+          "values": [
+            "big-ip_http-health-monitor"
+          ]
+        }
+      ],
+      "field": "dnsLookupMs",
+      "function": "max",
+      "metricName": "dnsLookupMs"
+    },
+    {
+      "measurement": "monitor",
+      "tags": [
+        {
+          "key": "source",
+          "values": [
+            "big-ip_http-health-monitor"
+          ]
+        }
+      ],
+      "field": "httpRequestTimeMs",
+      "function": "max",
+      "metricName": "httpRequestTimeMs"
+    },
+    {
+      "measurement": "monitor",
+      "tags": [
+        {
+          "key": "source",
+          "values": [
+            "big-ip_http-health-monitor"
+          ]
+        }
+      ],
+      "field": "contentTransferMs",
+      "function": "max",
+      "metricName": "contentTransferMs"
+    }
+  ],
+  "visualizationType": "VISUALIZATION_TYPE_LINE",
+  "period": "1d",
+  "analysis": null,
+  "healthStatus": "NONE",
+  "healthStatusReason": ""
+}

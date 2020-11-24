@@ -1,0 +1,240 @@
+{
+  "action": "deploy",
+  "declaration": [
+    {
+      "metadata": {
+        "version": "v1"
+      },
+      "application": {
+        "name": "EAP (na2)",
+        "description": "",
+        "labels": {
+          "latitude": "38.13",
+          "location": "AWS - US East (N. Virginia)",
+          "longitude": "-78.45"
+        },
+        "dependencies": [
+          {
+            "name": "docker-engine",
+            "description": "",
+            "labels": {},
+            "dependencies": [
+              {
+                "name": "nginx-gateway",
+                "description": "",
+                "labels": {},
+                "dependencies": [
+                  {
+                    "name": "backend-reverse-proxy",
+                    "description": "",
+                    "labels": {},
+                    "dependencies": [
+                      {
+                        "name": "nodejs-api",
+                        "description": "",
+                        "labels": {},
+                        "dependencies": [],
+                        "metrics": [
+                          {
+                            "measurement": "docker_container_status",
+                            "tags": {
+                              "container_image": "089622251853.dkr.ecr.us-east-1.amazonaws.com/auction-backend",
+                              "internal_name": "na2-auction"
+                            },
+                            "field": "uptime_ns",
+                            "healthSettings": {
+                              "aggregation": "Max",
+                              "timeRange": 1,
+                              "operator": "LessThan",
+                              "criticalThreshold": "10000000000",
+                              "warningThreshold": "60000000000",
+                              "noMetricData": "SetCritical"
+                            },
+                            "name": "uptime_ns"
+                          }
+                        ],
+                        "healthSourceSettings": {
+                          "metricsHealthAggregation": "WorstOf",
+                          "dependencyHealthAggregation": "WorstOf"
+                        },
+                        "insights": []
+                      }
+                    ],
+                    "metrics": [
+                      {
+                        "measurement": "docker_container_status",
+                        "tags": {
+                          "container_image": "089622251853.dkr.ecr.us-east-1.amazonaws.com/auction-rp-backend",
+                          "internal_name": "na2-auction"
+                        },
+                        "field": "uptime_ns",
+                        "healthSettings": {
+                          "aggregation": "Max",
+                          "timeRange": 1,
+                          "operator": "LessThan",
+                          "criticalThreshold": "10000000000",
+                          "warningThreshold": "60000000000",
+                          "noMetricData": "SetCritical"
+                        },
+                        "name": "uptime_ns"
+                      }
+                    ],
+                    "healthSourceSettings": {
+                      "metricsHealthAggregation": "WorstOf",
+                      "dependencyHealthAggregation": "WorstOf"
+                    },
+                    "insights": []
+                  },
+                  {
+                    "name": "frontend-reverse-proxy",
+                    "description": "",
+                    "labels": {},
+                    "dependencies": [
+                      {
+                        "name": "react-ui",
+                        "description": "",
+                        "labels": {},
+                        "dependencies": [],
+                        "metrics": [
+                          {
+                            "measurement": "docker_container_status",
+                            "tags": {
+                              "container_image": "089622251853.dkr.ecr.us-east-1.amazonaws.com/auction-frontend",
+                              "internal_name": "na2-auction"
+                            },
+                            "field": "uptime_ns",
+                            "healthSettings": {
+                              "aggregation": "Max",
+                              "timeRange": 1,
+                              "operator": "LessThan",
+                              "criticalThreshold": "10000000000",
+                              "warningThreshold": "60000000000",
+                              "noMetricData": "SetCritical"
+                            },
+                            "name": "uptime_ns"
+                          }
+                        ],
+                        "healthSourceSettings": {
+                          "metricsHealthAggregation": "WorstOf",
+                          "dependencyHealthAggregation": "WorstOf"
+                        },
+                        "insights": []
+                      }
+                    ],
+                    "metrics": [
+                      {
+                        "measurement": "docker_container_status",
+                        "tags": {
+                          "container_image": "089622251853.dkr.ecr.us-east-1.amazonaws.com/auction-rp-frontend",
+                          "internal_name": "na2-auction"
+                        },
+                        "field": "uptime_ns",
+                        "healthSettings": {
+                          "aggregation": "Max",
+                          "timeRange": 1,
+                          "operator": "LessThan",
+                          "criticalThreshold": "10000000000",
+                          "warningThreshold": "60000000000",
+                          "noMetricData": "KeepState"
+                        },
+                        "name": "uptime_ns"
+                      }
+                    ],
+                    "healthSourceSettings": {
+                      "metricsHealthAggregation": "WorstOf",
+                      "dependencyHealthAggregation": "WorstOf"
+                    },
+                    "insights": []
+                  }
+                ],
+                "metrics": [
+                  {
+                    "measurement": "docker_container_status",
+                    "tags": {
+                      "container_image": "089622251853.dkr.ecr.us-east-1.amazonaws.com/auction-gateway",
+                      "internal_name": "na2-auction"
+                    },
+                    "field": "uptime_ns",
+                    "healthSettings": {
+                      "aggregation": "Max",
+                      "timeRange": 1,
+                      "operator": "LessThan",
+                      "criticalThreshold": "10000000000",
+                      "warningThreshold": "60000000000",
+                      "noMetricData": "SetCritical"
+                    },
+                    "name": "uptime_ns"
+                  }
+                ],
+                "healthSourceSettings": {
+                  "metricsHealthAggregation": "WorstOf",
+                  "dependencyHealthAggregation": "WorstOf"
+                },
+                "insights": []
+              },
+              {
+                "name": "mysql-db",
+                "description": "",
+                "labels": {},
+                "dependencies": [],
+                "metrics": [
+                  {
+                    "measurement": "docker_container_status",
+                    "tags": {
+                      "container_image": "library/mysql",
+                      "internal_name": "na2-auction"
+                    },
+                    "field": "uptime_ns",
+                    "healthSettings": {
+                      "aggregation": "Max",
+                      "timeRange": 1,
+                      "operator": "LessThan",
+                      "criticalThreshold": "1",
+                      "warningThreshold": "65000000000",
+                      "noMetricData": "SetCritical"
+                    },
+                    "name": "uptime_ns"
+                  }
+                ],
+                "healthSourceSettings": {
+                  "metricsHealthAggregation": "WorstOf",
+                  "dependencyHealthAggregation": "WorstOf"
+                },
+                "insights": []
+              }
+            ],
+            "metrics": [],
+            "healthSourceSettings": {
+              "metricsHealthAggregation": "WorstOf",
+              "dependencyHealthAggregation": "WorstOf"
+            },
+            "insights": []
+          }
+        ],
+        "metrics": [
+          {
+            "measurement": "monitor",
+            "tags": {
+              "source": "eap_http-health-monitor"
+            },
+            "field": "healthStatus",
+            "healthSettings": {
+              "aggregation": "",
+              "timeRange": 1,
+              "operator": "",
+              "criticalThreshold": "",
+              "warningThreshold": "",
+              "noMetricData": "KeepState"
+            },
+            "name": "healthStatus"
+          }
+        ],
+        "healthSourceSettings": {
+          "metricsHealthAggregation": "WorstOf",
+          "dependencyHealthAggregation": "WorstOf"
+        },
+        "insights": []
+      }
+    }
+  ]
+}

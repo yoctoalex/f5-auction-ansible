@@ -1,0 +1,57 @@
+{
+  "title": "Request Time",
+  "category": "INS_CAT_OPERATIONS",
+  "severity": "INS_SEV_INFORMATIONAL",
+  "appNames": [],
+  "appComponents": [],
+  "metrics": [
+    {
+      "measurement": "monitor",
+      "tags": [
+        {
+          "key": "source",
+          "values": [
+            "EAP Auction App"
+          ]
+        }
+      ],
+      "field": "httpRequestTimeMs",
+      "function": "max",
+      "metricName": "EAP"
+    },
+    {
+      "measurement": "monitor",
+      "tags": [
+        {
+          "key": "source",
+          "values": [
+            "Direct HTTPS Auction",
+            "Direct Auction"
+          ]
+        }
+      ],
+      "field": "httpRequestTimeMs",
+      "function": "max",
+      "metricName": "Direct"
+    },
+    {
+      "measurement": "monitor",
+      "tags": [
+        {
+          "key": "source",
+          "values": [
+            "EAP CloudFront"
+          ]
+        }
+      ],
+      "field": "httpRequestTimeMs",
+      "function": "max",
+      "metricName": "EAP CloudFront"
+    }
+  ],
+  "visualizationType": "VISUALIZATION_TYPE_LINE",
+  "period": "1d",
+  "analysis": null,
+  "healthStatus": "NONE",
+  "healthStatusReason": ""
+}

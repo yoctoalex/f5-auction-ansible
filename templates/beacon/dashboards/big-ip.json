@@ -1,0 +1,210 @@
+{
+  "id": "",
+  "name": "BIG IP",
+  "description": "",
+  "shared": false,
+  "widgets": [
+    {
+      "type": "Custom Insight",
+      "groupBy": [
+      ],
+      "chartType": "",
+      "appID": "",
+      "insightName": "F5 Assets and Inventory",
+      "metadata": {
+        "i": "custom-insight-widget_drop_1_2",
+        "id": "custom-insight-widget_drop_1_2",
+        "x": "4",
+        "y": "0",
+        "w": "4",
+        "h": "2",
+        "minH": "2",
+        "minW": "4",
+        "maxH": "4"
+      },
+      "i": "custom-insight-widget_drop_1_2",
+      "id": "custom-insight-widget_drop_1_2",
+      "x": 4,
+      "y": 0,
+      "w": 4,
+      "h": 2,
+      "minH": 2,
+      "minW": 4,
+      "maxH": 4,
+      "imageAltText": {
+        "id": "Beacon.DashboardManagement.DashboardLayout.CustomInsightWidgetLabel",
+        "defaultMessage": "Insight"
+      },
+      "imageTitle": {
+        "id": "Beacon.DashboardManagement.DashboardLayout.CustomInsightWidgetLabel",
+        "defaultMessage": "Insight"
+      },
+      "title": {
+        "id": "Beacon.DashboardManagement.DashboardLayout.CustomInsightWidgetLabel",
+        "defaultMessage": "Insight"
+      }
+    },
+    {
+      "type": "Custom Insight",
+      "groupBy": [
+      ],
+      "chartType": "",
+      "appID": "",
+      "insightName": "Big-IP System Info",
+      "metadata": {
+        "i": "custom-insight-widget_drop_2_3",
+        "id": "custom-insight-widget_drop_2_3",
+        "x": "8",
+        "y": "0",
+        "w": "4",
+        "h": "2",
+        "minH": "2",
+        "minW": "4",
+        "maxH": "4"
+      },
+      "i": "custom-insight-widget_drop_2_3",
+      "id": "custom-insight-widget_drop_2_3",
+      "x": 8,
+      "y": 0,
+      "w": 4,
+      "h": 2,
+      "minH": 2,
+      "minW": 4,
+      "maxH": 4,
+      "imageAltText": {
+        "id": "Beacon.DashboardManagement.DashboardLayout.CustomInsightWidgetLabel",
+        "defaultMessage": "Insight"
+      },
+      "imageTitle": {
+        "id": "Beacon.DashboardManagement.DashboardLayout.CustomInsightWidgetLabel",
+        "defaultMessage": "Insight"
+      },
+      "title": {
+        "id": "Beacon.DashboardManagement.DashboardLayout.CustomInsightWidgetLabel",
+        "defaultMessage": "Insight"
+      }
+    },
+    {
+      "type": "Custom Insight",
+      "groupBy": [
+      ],
+      "chartType": "",
+      "appID": "",
+      "insightName": "Big-IP Request Metrics",
+      "metadata": {
+        "i": "custom-insight-widget_drop_4_5",
+        "id": "custom-insight-widget_drop_4_5",
+        "x": "4",
+        "y": "2",
+        "w": "4",
+        "h": "2",
+        "minH": "2",
+        "minW": "4",
+        "maxH": "4"
+      },
+      "i": "custom-insight-widget_drop_4_5",
+      "id": "custom-insight-widget_drop_4_5",
+      "x": 4,
+      "y": 2,
+      "w": 4,
+      "h": 2,
+      "minH": 2,
+      "minW": 4,
+      "maxH": 4,
+      "imageAltText": {
+        "id": "Beacon.DashboardManagement.DashboardLayout.CustomInsightWidgetLabel",
+        "defaultMessage": "Insight"
+      },
+      "imageTitle": {
+        "id": "Beacon.DashboardManagement.DashboardLayout.CustomInsightWidgetLabel",
+        "defaultMessage": "Insight"
+      },
+      "title": {
+        "id": "Beacon.DashboardManagement.DashboardLayout.CustomInsightWidgetLabel",
+        "defaultMessage": "Insight"
+      }
+    },
+    {
+      "type": "App Map",
+      "groupBy": [
+      ],
+      "chartType": "",
+      "appID": "{{ beacon_apps["BIG-IP (na4)"] }}",
+      "insightName": "",
+      "metadata": {
+        "i": "static-app-map-widget_drop_6_4",
+        "id": "static-app-map-widget_drop_6_4",
+        "x": "0",
+        "y": "0",
+        "w": "4",
+        "h": "2",
+        "minH": "2",
+        "minW": "4",
+        "maxH": "4"
+      },
+      "i": "static-app-map-widget_drop_6_4",
+      "id": "static-app-map-widget_drop_6_4",
+      "x": 0,
+      "y": 0,
+      "w": 4,
+      "h": 2,
+      "minH": 2,
+      "minW": 4,
+      "maxH": 4,
+      "imageAltText": {
+        "id": "Beacon.DashboardManagement.DashboardLayout.StaticAppMapWidgetLabel",
+        "defaultMessage": "Application Map"
+      },
+      "imageTitle": {
+        "id": "Beacon.DashboardManagement.DashboardLayout.StaticAppMapWidgetLabel",
+        "defaultMessage": "Application Map"
+      },
+      "title": {
+        "id": "Beacon.DashboardManagement.DashboardLayout.StaticAppMapWidgetLabel",
+        "defaultMessage": "Application Map"
+      }
+    },
+    {
+      "type": "Custom Insight",
+      "groupBy": [
+      ],
+      "chartType": "",
+      "appID": "",
+      "insightName": "Big-IP Requests",
+      "metadata": {
+        "i": "custom-insight-widget_drop_8_6",
+        "id": "custom-insight-widget_drop_8_6",
+        "x": "0",
+        "y": "2",
+        "w": "4",
+        "h": "2",
+        "minH": "2",
+        "minW": "4",
+        "maxH": "4"
+      },
+      "i": "custom-insight-widget_drop_8_6",
+      "id": "custom-insight-widget_drop_8_6",
+      "x": 0,
+      "y": 2,
+      "w": 4,
+      "h": 2,
+      "minH": 2,
+      "minW": 4,
+      "maxH": 4,
+      "imageAltText": {
+        "id": "Beacon.DashboardManagement.DashboardLayout.CustomInsightWidgetLabel",
+        "defaultMessage": "Insight"
+      },
+      "imageTitle": {
+        "id": "Beacon.DashboardManagement.DashboardLayout.CustomInsightWidgetLabel",
+        "defaultMessage": "Insight"
+      },
+      "title": {
+        "id": "Beacon.DashboardManagement.DashboardLayout.CustomInsightWidgetLabel",
+        "defaultMessage": "Insight"
+      }
+    }
+  ],
+  "labels": {
+  }
+}

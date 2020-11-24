@@ -1,0 +1,256 @@
+{
+  "action": "deploy",
+  "declaration": [
+    {
+      "metadata": {
+        "version": "v1"
+      },
+      "application": {
+        "name": "BIG-IP (na4)",
+        "description": "",
+        "labels": {
+          "latitude": "46.15",
+          "location": "AWS - US West (Oregon)",
+          "longitude": "-123.88"
+        },
+        "dependencies": [
+          {
+            "name": "ui-pool",
+            "description": "",
+            "labels": {},
+            "dependencies": [
+              {
+                "name": "ui-reverse-proxy",
+                "description": "",
+                "labels": {},
+                "dependencies": [
+                  {
+                    "name": "ReactJS",
+                    "description": "",
+                    "labels": {},
+                    "dependencies": [],
+                    "metrics": [
+                      {
+                        "measurement": "docker_container_status",
+                        "tags": {
+                          "container_image": "089622251853.dkr.ecr.us-east-1.amazonaws.com/auction-frontend",
+                          "internal_name": "na4-auction"
+                        },
+                        "field": "uptime_ns",
+                        "healthSettings": {
+                          "aggregation": "Max",
+                          "timeRange": 1,
+                          "operator": "LessThan",
+                          "criticalThreshold": "10000000000",
+                          "warningThreshold": "60000000000",
+                          "noMetricData": "KeepState"
+                        },
+                        "name": "big-ip_reactjs_health"
+                      }
+                    ],
+                    "healthSourceSettings": {
+                      "metricsHealthAggregation": "WorstOf",
+                      "dependencyHealthAggregation": "WorstOf"
+                    },
+                    "insights": []
+                  }
+                ],
+                "metrics": [
+                  {
+                    "measurement": "docker_container_status",
+                    "tags": {
+                      "container_image": "089622251853.dkr.ecr.us-east-1.amazonaws.com/auction-rp-frontend",
+                      "internal_name": "na4-auction"
+                    },
+                    "field": "uptime_ns",
+                    "healthSettings": {
+                      "aggregation": "Mean",
+                      "timeRange": 1,
+                      "operator": "LessThan",
+                      "criticalThreshold": "10000000000",
+                      "warningThreshold": "60000000000",
+                      "noMetricData": "KeepState"
+                    },
+                    "name": "big-ip_ui-reverse-proxy_health"
+                  }
+                ],
+                "healthSourceSettings": {
+                  "metricsHealthAggregation": "WorstOf",
+                  "dependencyHealthAggregation": "WorstOf"
+                },
+                "insights": []
+              }
+            ],
+            "metrics": [
+              {
+                "measurement": "bigip-pool",
+                "tags": {
+                  "name": "/Common/auction-ui-pool-1"
+                },
+                "field": "healthStatus",
+                "healthSettings": {
+                  "aggregation": "",
+                  "timeRange": 1,
+                  "operator": "",
+                  "criticalThreshold": "",
+                  "warningThreshold": "",
+                  "noMetricData": "KeepState"
+                },
+                "name": "big-ip_ui-pool_health"
+              }
+            ],
+            "healthSourceSettings": {
+              "metricsHealthAggregation": "WorstOf",
+              "dependencyHealthAggregation": "WorstOf"
+            },
+            "insights": []
+          },
+          {
+            "name": "api-pool",
+            "description": "",
+            "labels": {},
+            "dependencies": [
+              {
+                "name": "api-reverse-proxy",
+                "description": "",
+                "labels": {},
+                "dependencies": [
+                  {
+                    "name": "NodeJS",
+                    "description": "",
+                    "labels": {},
+                    "dependencies": [],
+                    "metrics": [
+                      {
+                        "measurement": "docker_container_status",
+                        "tags": {
+                          "container_image": "089622251853.dkr.ecr.us-east-1.amazonaws.com/auction-backend",
+                          "internal_name": "na4-auction"
+                        },
+                        "field": "uptime_ns",
+                        "healthSettings": {
+                          "aggregation": "Mean",
+                          "timeRange": 1,
+                          "operator": "LessThan",
+                          "criticalThreshold": "10000000000",
+                          "warningThreshold": "60000000000",
+                          "noMetricData": "KeepState"
+                        },
+                        "name": "big-ip_nodejs_health"
+                      }
+                    ],
+                    "healthSourceSettings": {
+                      "metricsHealthAggregation": "WorstOf",
+                      "dependencyHealthAggregation": "WorstOf"
+                    },
+                    "insights": []
+                  }
+                ],
+                "metrics": [
+                  {
+                    "measurement": "docker_container_status",
+                    "tags": {
+                      "container_image": "089622251853.dkr.ecr.us-east-1.amazonaws.com/auction-rp-backend",
+                      "internal_name": "na4-auction"
+                    },
+                    "field": "uptime_ns",
+                    "healthSettings": {
+                      "aggregation": "Mean",
+                      "timeRange": 1,
+                      "operator": "LessThan",
+                      "criticalThreshold": "10000000000",
+                      "warningThreshold": "60000000000",
+                      "noMetricData": "KeepState"
+                    },
+                    "name": "big-ip_api-reverse-proxy_health"
+                  }
+                ],
+                "healthSourceSettings": {
+                  "metricsHealthAggregation": "WorstOf",
+                  "dependencyHealthAggregation": "WorstOf"
+                },
+                "insights": []
+              },
+              {
+                "name": "MySQL",
+                "description": "",
+                "labels": {},
+                "dependencies": [],
+                "metrics": [
+                  {
+                    "measurement": "docker_container_status",
+                    "tags": {
+                      "container_image": "library/mysql",
+                      "internal_name": "na4-auction"
+                    },
+                    "field": "uptime_ns",
+                    "healthSettings": {
+                      "aggregation": "Max",
+                      "timeRange": 1,
+                      "operator": "LessThan",
+                      "criticalThreshold": "10000000000",
+                      "warningThreshold": "60000000000",
+                      "noMetricData": "KeepState"
+                    },
+                    "name": "big-ip_mysql_health"
+                  }
+                ],
+                "healthSourceSettings": {
+                  "metricsHealthAggregation": "WorstOf",
+                  "dependencyHealthAggregation": "WorstOf"
+                },
+                "insights": []
+              }
+            ],
+            "metrics": [
+              {
+                "measurement": "bigip-pool",
+                "tags": {
+                  "name": "/Common/auction-api-pool-1"
+                },
+                "field": "healthStatus",
+                "healthSettings": {
+                  "aggregation": "",
+                  "timeRange": 1,
+                  "operator": "",
+                  "criticalThreshold": "",
+                  "warningThreshold": "",
+                  "noMetricData": "KeepState"
+                },
+                "name": "big-ip_api-pool_health"
+              }
+            ],
+            "healthSourceSettings": {
+              "metricsHealthAggregation": "WorstOf",
+              "dependencyHealthAggregation": "WorstOf"
+            },
+            "insights": []
+          }
+        ],
+        "metrics": [
+          {
+            "measurement": "bigip-virtual",
+            "tags": {
+              "name": "/Common/auction-app"
+            },
+            "field": "healthStatus",
+            "healthSettings": {
+              "aggregation": "",
+              "timeRange": 1,
+              "operator": "",
+              "criticalThreshold": "",
+              "warningThreshold": "",
+              "noMetricData": "KeepState"
+            },
+            "name": "big-ip_vp_health"
+          }
+        ],
+        "healthSourceSettings": {
+          "metricsHealthAggregation": "WorstOf",
+          "dependencyHealthAggregation": "WorstOf"
+        },
+        "insights": []
+      }
+    }
+  ]
+}

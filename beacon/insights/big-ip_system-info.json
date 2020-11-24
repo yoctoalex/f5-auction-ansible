@@ -1,0 +1,55 @@
+{
+  "title": "Big-IP System Info",
+  "description": "",
+  "markdownContent": "",
+  "category": "INS_CAT_OPERATIONS",
+  "severity": "INS_SEV_NONE",
+  "createTime": "2020-11-10T21:22:00.03214Z",
+  "updateTime": "2020-11-10T21:22:00.03214Z",
+  "appNames": [
+    "BIG-IP"
+  ],
+  "appComponents": [
+    {
+      "appName": "BIG-IP",
+      "componentName": "BIG-IP"
+    }
+  ],
+  "builtIn": false,
+  "query": "",
+  "metrics": [
+    {
+      "measurement": "bigip-system",
+      "tags": [
+        {
+          "key": "source",
+          "values": [
+            "ip-172-31-68-27.us-west-2.compute.internal"
+          ]
+        }
+      ],
+      "field": "systemCpuUsage",
+      "function": "mean",
+      "metricName": "CPU"
+    },
+    {
+      "measurement": "bigip-system",
+      "tags": [
+        {
+          "key": "source",
+          "values": [
+            "ip-172-31-68-27.us-west-2.compute.internal"
+          ]
+        }
+      ],
+      "field": "systemMemoryUsage",
+      "function": "mean",
+      "metricName": "RAM"
+    }
+  ],
+  "visualizationType": "VISUALIZATION_TYPE_LINE",
+  "period": "1d",
+  "analysis": null,
+  "healthStatus": "NONE",
+  "healthStatusReason": ""
+}

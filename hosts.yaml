@@ -1,0 +1,80 @@
+    auction:
+        hosts:
+            na1:
+              ansible_python_interpreter: /usr/bin/python3
+              ansible_host: 34.229.48.248
+              ansible_ssh_private_key_file: /home/ubuntu/.ssh/auction-app.pem
+              ansible_user: ubuntu
+              beacon_tag_region: "us-east-1"
+              beacon_tag_internal_name: "na1-auction"
+              beacon_tag_platform: "aws"
+              description: "none"
+            na2:
+              ansible_python_interpreter: /usr/bin/python3
+              ansible_host: 18.232.64.254
+              ansible_ssh_private_key_file: /home/ubuntu/.ssh/auction-app.pem
+              ansible_user: ubuntu
+              beacon_tag_region: "us-east-1"
+              beacon_tag_internal_name: "na2-auction"
+              beacon_tag_platform: "aws"
+              description: "eap"
+            na3:
+              ansible_python_interpreter: /usr/bin/python3
+              ansible_host: 52.249.252.91
+              ansible_ssh_private_key_file: /home/ubuntu/.ssh/auction-app_azure.pem
+              ansible_user: ubuntu
+              beacon_tag_region: "east-us"
+              beacon_tag_internal_name: "na3-auction"
+              beacon_tag_platform: "azure"
+              description: "azure"
+            na4:
+              ansible_python_interpreter: /usr/bin/python3
+              ansible_host: 34.216.73.128
+              ansible_ssh_private_key_file: /home/ubuntu/.ssh/auction-app.pem
+              ansible_user: ubuntu
+              beacon_tag_region: "us-west-2"
+              beacon_tag_internal_name: "na4-auction"
+              beacon_tag_platform: "aws"
+              description: "none"
+            au:
+              ansible_python_interpreter: /usr/bin/python3
+              ansible_host: 54.206.13.195
+              ansible_ssh_private_key_file: /home/ubuntu/.ssh/auction-app.pem
+              ansible_user: ubuntu
+              beacon_tag_region: "ap-southeast-2"
+              beacon_tag_internal_name: "au-auction"
+              beacon_tag_platform: "aws"
+              description: "none"
+            eu:
+              ansible_python_interpreter: /usr/bin/python3
+              ansible_host: 3.122.191.227
+              ansible_ssh_private_key_file: /home/ubuntu/.ssh/auction-app.pem
+              ansible_user: ubuntu
+              beacon_tag_region: "eu-central-1"
+              beacon_tag_internal_name: "eu-auction"
+              beacon_tag_platform: "aws"
+              services: "bot-protect"
+            eu1:
+              ansible_python_interpreter: /usr/bin/python3
+              ansible_host: 35.180.122.91
+              ansible_ssh_private_key_file: /home/ubuntu/.ssh/auction-app.pem
+              ansible_user: ubuntu
+              beacon_tag_region: "eu-west-3"
+              beacon_tag_internal_name: "eu1-auction"
+              beacon_tag_platform: "aws"
+              description: "none"
+    beacon:
+      hosts:
+        localhost:
+          ansible_python_interpreter: /usr/bin/python3
+          zone: ""
+          eap_uri: ""
+          eap_uri_cf: ""
+          eap_uri_direct: ""
+          beacon_un: ""
+          beacon_pw: ""
+          beacon_acct: ""
+    control:
+        hosts:
+            localhost:
+                ansible_python_interpreter: /usr/bin/python3

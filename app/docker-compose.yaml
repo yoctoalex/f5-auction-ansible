@@ -1,0 +1,92 @@
+version: '3.3'
+services:
+  mysql:
+    image: library/mysql:8.0.22
+    command: mysqld --default-authentication-plugin=mysql_native_password
+    restart: always
+    ports:
+      - 3306:3306
+    volumes:
+      - /home/ubuntu/data/mysql:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_PASS}
+
+  auction-backend:
+    command: npm start
+    image: ${DOCKER_REGISTRY}/auction-backend:${REGION}
+    restart: always
+    depends_on:
+      - mysql
+    environment:
+      - PORT=9191
+      - MYSQL_HOST=mysql
+      - MYSQL_PORT=3306
+      - MYSQL_PASSWORD=${MYSQL_PASS}
+
+  auction-frontend:
+    command: npm start
+    image: ${DOCKER_REGISTRY}/auction-frontend:${REGION}
+    restart: always
+    depends_on:
+      - mysql
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+
+  auction-rp-frontend:
+    image: ${DOCKER_REGISTRY}/auction-rp-frontend:${REGION}
+    ports:
+      - 2011:2011
+    depends_on:
+      - auction-frontend
+    restart: always
+
+  auction-rp-backend:
+    image: ${DOCKER_REGISTRY}/auction-rp-backend:${REGION}
+    ports:
+      - 2010:2010
+    depends_on:
+      - auction-backend
+    restart: always
+
+  auction-gateway:
+    image: ${DOCKER_REGISTRY}/auction-gateway:${REGION}
+    ports:
+      - 80:80
+      - 443:443
+    depends_on:
+      - auction-rp-backend
+      - auction-rp-frontend
+    restart: always
+
+  influxdb:
+    image: influxdb:latest
+    restart: always
+    environment:
+      - INFLUXDB_DATA_ENGINE=tsm1
+      - INFLUXDB_REPORTING_DISABLED=false
+      - INFLUXDB_DB=telegraf
+      - INFLUXDB_USER=telegraf
+      - INFLUXDB_ADMIN_USER=admin
+      - INFLUXDB_ADMIN_PASSWORD=telegraf
+    volumes:
+      - /home/ubuntu/data/influxdb:/var/lib/influxdb
+
+  telegraf:
+    image: telegraf:latest
+    command: -config /etc/telegraf/telegraf.conf -config-directory /etc/telegraf/telegraf.d
+    restart: always
+    depends_on:
+      - influxdb
+    environment:
+      HOST_PROC: /rootfs/proc
+      HOST_SYS: /rootfs/sys
+      HOST_ETC: /rootfs/etc
+    volumes:
+      - /home/ubuntu/telegraf/telegraf.conf:/etc/telegraf/telegraf.conf:ro
+      - /home/ubuntu/telegraf/telegraf.d:/etc/telegraf/telegraf.d:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /sys:/rootfs/sys:ro
+      - /proc:/rootfs/proc:ro
+      - /etc:/rootfs/etc:ro
+

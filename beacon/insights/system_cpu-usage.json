@@ -1,0 +1,114 @@
+{
+  "title": "CPU Usage",
+  "category": "INS_CAT_OPERATIONS",
+  "severity": "INS_SEV_INFORMATIONAL",
+  "appNames": [],
+  "appComponents": [],
+  "metrics": [
+    {
+      "measurement": "cpu",
+      "tags": [
+        {
+          "key": "cpu",
+          "values": [
+            "cpu-total"
+          ]
+        },
+        {
+          "key": "host",
+          "values": [
+            "na1"
+          ]
+        }
+      ],
+      "field": "usage_system",
+      "function": "max",
+      "metricName": "na1-auction"
+    },
+    {
+      "measurement": "cpu",
+      "tags": [
+        {
+          "key": "cpu",
+          "values": [
+            "cpu-total"
+          ]
+        },
+        {
+          "key": "host",
+          "values": [
+            "na3"
+          ]
+        }
+      ],
+      "field": "usage_system",
+      "function": "max",
+      "metricName": "na3-auction"
+    },
+    {
+      "measurement": "cpu",
+      "tags": [
+        {
+          "key": "cpu",
+          "values": [
+            "cpu-total"
+          ]
+        },
+        {
+          "key": "host",
+          "values": [
+            "au"
+          ]
+        }
+      ],
+      "field": "usage_system",
+      "function": "max",
+      "metricName": "au-auction"
+    },
+    {
+      "measurement": "cpu",
+      "tags": [
+        {
+          "key": "cpu",
+          "values": [
+            "cpu-total"
+          ]
+        },
+        {
+          "key": "host",
+          "values": [
+            "na2"
+          ]
+        }
+      ],
+      "field": "usage_system",
+      "function": "max",
+      "metricName": "na2-auction"
+    },
+    {
+      "measurement": "cpu",
+      "tags": [
+        {
+          "key": "cpu",
+          "values": [
+            "cpu-total"
+          ]
+        },
+        {
+          "key": "host",
+          "values": [
+            "eu1"
+          ]
+        }
+      ],
+      "field": "usage_system",
+      "function": "max",
+      "metricName": "eu1-auction"
+    }
+  ],
+  "visualizationType": "VISUALIZATION_TYPE_LINE",
+  "period": "1d",
+  "analysis": null,
+  "healthStatus": "NONE",
+  "healthStatusReason": ""
+}

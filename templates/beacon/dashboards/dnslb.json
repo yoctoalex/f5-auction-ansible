@@ -1,0 +1,323 @@
+{
+  "id": "",
+  "name": "DNS LB",
+  "description": "",
+  "shared": false,
+  "widgets": [
+    {
+      "type": "App Map",
+      "groupBy": [],
+      "chartType": "",
+      "appID": "{{ beacon_apps["DNS Load Balancer"] }}",
+      "insightName": "",
+      "metadata": {
+        "h": "2",
+        "i": "static-app-map-widget_drop_0_1",
+        "id": "static-app-map-widget_drop_0_1",
+        "maxH": "4",
+        "minH": "2",
+        "minW": "4",
+        "w": "4",
+        "x": "0",
+        "y": "0"
+      },
+      "i": "static-app-map-widget_drop_0_1",
+      "id": "static-app-map-widget_drop_0_1",
+      "x": 0,
+      "y": 0,
+      "w": 4,
+      "h": 2,
+      "minH": 2,
+      "minW": 4,
+      "maxH": 4,
+      "imageAltText": {
+        "id": "Beacon.DashboardManagement.DashboardLayout.StaticAppMapWidgetLabel",
+        "defaultMessage": "Application Map"
+      },
+      "imageTitle": {
+        "id": "Beacon.DashboardManagement.DashboardLayout.StaticAppMapWidgetLabel",
+        "defaultMessage": "Application Map"
+      },
+      "title": {
+        "id": "Beacon.DashboardManagement.DashboardLayout.StaticAppMapWidgetLabel",
+        "defaultMessage": "Application Map"
+      }
+    },
+    {
+      "type": "Custom Insight",
+      "groupBy": [],
+      "chartType": "",
+      "appID": "",
+      "insightName": "Gateway Requests",
+      "metadata": {
+        "h": "2",
+        "i": "custom-insight-widget_drop_1_2",
+        "id": "custom-insight-widget_drop_1_2",
+        "maxH": "4",
+        "minH": "2",
+        "minW": "4",
+        "w": "4",
+        "x": "0",
+        "y": "2"
+      },
+      "i": "custom-insight-widget_drop_1_2",
+      "id": "custom-insight-widget_drop_1_2",
+      "x": 0,
+      "y": 2,
+      "w": 4,
+      "h": 2,
+      "minH": 2,
+      "minW": 4,
+      "maxH": 4,
+      "imageAltText": {
+        "id": "Beacon.DashboardManagement.DashboardLayout.CustomInsightWidgetLabel",
+        "defaultMessage": "Insight"
+      },
+      "imageTitle": {
+        "id": "Beacon.DashboardManagement.DashboardLayout.CustomInsightWidgetLabel",
+        "defaultMessage": "Insight"
+      },
+      "title": {
+        "id": "Beacon.DashboardManagement.DashboardLayout.CustomInsightWidgetLabel",
+        "defaultMessage": "Insight"
+      }
+    },
+    {
+      "type": "App History",
+      "groupBy": [],
+      "chartType": "historymapRegular",
+      "appID": "",
+      "insightName": "",
+      "metadata": {
+        "h": "2",
+        "i": "app-health-history-widget_drop_2_3",
+        "id": "app-health-history-widget_drop_2_3",
+        "maxH": "4",
+        "minH": "2",
+        "minW": "8",
+        "w": "8",
+        "x": "4",
+        "y": "0"
+      },
+      "i": "app-health-history-widget_drop_2_3",
+      "id": "app-health-history-widget_drop_2_3",
+      "x": 4,
+      "y": 0,
+      "w": 8,
+      "h": 2,
+      "minH": 2,
+      "minW": 8,
+      "maxH": 4,
+      "imageAltText": {
+        "id": "Beacon.Common.ApplicationHealthHistoryLabel",
+        "defaultMessage": "Application Health History"
+      },
+      "imageTitle": {
+        "id": "Beacon.Common.ApplicationHealthHistoryLabel",
+        "defaultMessage": "Application Health History"
+      },
+      "title": {
+        "id": "Beacon.Common.ApplicationHealthHistoryLabel",
+        "defaultMessage": "Application Health History"
+      }
+    },
+    {
+      "type": "App Status Health",
+      "groupBy": [
+        "location",
+        "health"
+      ],
+      "chartType": "treemapRegular",
+      "appID": "",
+      "insightName": "",
+      "metadata": {
+        "h": "2",
+        "i": "app-current-health-widget_drop_3_4",
+        "id": "app-current-health-widget_drop_3_4",
+        "maxH": "4",
+        "minH": "2",
+        "minW": "4",
+        "w": "4",
+        "x": "8",
+        "y": "2"
+      },
+      "i": "app-current-health-widget_drop_3_4",
+      "id": "app-current-health-widget_drop_3_4",
+      "x": 8,
+      "y": 2,
+      "w": 4,
+      "h": 2,
+      "minH": 2,
+      "minW": 4,
+      "maxH": 4,
+      "imageAltText": {
+        "id": "Beacon.DashboardManagement.DashboardLayout.AppCurrentHealthWidgetLabel",
+        "defaultMessage": "Application Current Health"
+      },
+      "imageTitle": {
+        "id": "Beacon.DashboardManagement.DashboardLayout.AppCurrentHealthWidgetLabel",
+        "defaultMessage": "Application Current Health"
+      },
+      "title": {
+        "id": "Beacon.DashboardManagement.DashboardLayout.AppCurrentHealthWidgetLabel",
+        "defaultMessage": "Application Current Health"
+      }
+    },
+    {
+      "type": "Custom Insight",
+      "groupBy": [],
+      "chartType": "",
+      "appID": "",
+      "insightName": "MySQL Queries",
+      "metadata": {
+        "h": "2",
+        "i": "custom-insight-widget_drop_4_5",
+        "id": "custom-insight-widget_drop_4_5",
+        "maxH": "4",
+        "minH": "2",
+        "minW": "4",
+        "w": "4",
+        "x": "4",
+        "y": "2"
+      },
+      "i": "custom-insight-widget_drop_4_5",
+      "id": "custom-insight-widget_drop_4_5",
+      "x": 4,
+      "y": 2,
+      "w": 4,
+      "h": 2,
+      "minH": 2,
+      "minW": 4,
+      "maxH": 4,
+      "imageAltText": {
+        "id": "Beacon.DashboardManagement.DashboardLayout.CustomInsightWidgetLabel",
+        "defaultMessage": "Insight"
+      },
+      "imageTitle": {
+        "id": "Beacon.DashboardManagement.DashboardLayout.CustomInsightWidgetLabel",
+        "defaultMessage": "Insight"
+      },
+      "title": {
+        "id": "Beacon.DashboardManagement.DashboardLayout.CustomInsightWidgetLabel",
+        "defaultMessage": "Insight"
+      }
+    },
+    {
+      "type": "Custom Insight",
+      "groupBy": [],
+      "chartType": "",
+      "appID": "",
+      "insightName": "CPU Usage",
+      "metadata": {
+        "h": "2",
+        "i": "custom-insight-widget_drop_5_6",
+        "id": "custom-insight-widget_drop_5_6",
+        "maxH": "4",
+        "minH": "2",
+        "minW": "4",
+        "w": "4",
+        "x": "0",
+        "y": "4"
+      },
+      "i": "custom-insight-widget_drop_5_6",
+      "id": "custom-insight-widget_drop_5_6",
+      "x": 0,
+      "y": 4,
+      "w": 4,
+      "h": 2,
+      "minH": 2,
+      "minW": 4,
+      "maxH": 4,
+      "imageAltText": {
+        "id": "Beacon.DashboardManagement.DashboardLayout.CustomInsightWidgetLabel",
+        "defaultMessage": "Insight"
+      },
+      "imageTitle": {
+        "id": "Beacon.DashboardManagement.DashboardLayout.CustomInsightWidgetLabel",
+        "defaultMessage": "Insight"
+      },
+      "title": {
+        "id": "Beacon.DashboardManagement.DashboardLayout.CustomInsightWidgetLabel",
+        "defaultMessage": "Insight"
+      }
+    },
+    {
+      "type": "Custom Insight",
+      "groupBy": [],
+      "chartType": "",
+      "appID": "",
+      "insightName": "RAM Usage",
+      "metadata": {
+        "h": "2",
+        "i": "custom-insight-widget_drop_7_8",
+        "id": "custom-insight-widget_drop_7_8",
+        "maxH": "4",
+        "minH": "2",
+        "minW": "4",
+        "w": "4",
+        "x": "4",
+        "y": "4"
+      },
+      "i": "custom-insight-widget_drop_7_8",
+      "id": "custom-insight-widget_drop_7_8",
+      "x": 4,
+      "y": 4,
+      "w": 4,
+      "h": 2,
+      "minH": 2,
+      "minW": 4,
+      "maxH": 4,
+      "imageAltText": {
+        "id": "Beacon.DashboardManagement.DashboardLayout.CustomInsightWidgetLabel",
+        "defaultMessage": "Insight"
+      },
+      "imageTitle": {
+        "id": "Beacon.DashboardManagement.DashboardLayout.CustomInsightWidgetLabel",
+        "defaultMessage": "Insight"
+      },
+      "title": {
+        "id": "Beacon.DashboardManagement.DashboardLayout.CustomInsightWidgetLabel",
+        "defaultMessage": "Insight"
+      }
+    },
+    {
+      "type": "Exceptions Card",
+      "groupBy": [],
+      "chartType": "",
+      "appID": "",
+      "insightName": "",
+      "metadata": {
+        "h": "2",
+        "i": "events-widget_drop_8_8",
+        "id": "events-widget_drop_8_8",
+        "maxH": "4",
+        "minH": "2",
+        "minW": "4",
+        "w": "4",
+        "x": "8",
+        "y": "4"
+      },
+      "i": "events-widget_drop_8_8",
+      "id": "events-widget_drop_8_8",
+      "x": 8,
+      "y": 4,
+      "w": 4,
+      "h": 2,
+      "minH": 2,
+      "minW": 4,
+      "maxH": 4,
+      "imageAltText": {
+        "id": "Beacon.DashboardManagement.DashboardLayout.EventsWidgetLabel",
+        "defaultMessage": "Events"
+      },
+      "imageTitle": {
+        "id": "Beacon.DashboardManagement.DashboardLayout.EventsWidgetLabel",
+        "defaultMessage": "Events"
+      },
+      "title": {
+        "id": "Beacon.DashboardManagement.DashboardLayout.EventsWidgetLabel",
+        "defaultMessage": "Events"
+      }
+    }
+  ]
+}

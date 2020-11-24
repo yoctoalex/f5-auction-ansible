@@ -1,0 +1,242 @@
+- name: Configure Beacon
+  hosts: beacon
+  gather_facts: false
+  connection: local
+
+  vars:
+    csAPI: "https://api.cloudservices.f5.com"
+    ingestAPI: "https://ingestion.ovr.prd.f5aas.com:50443"
+
+  tasks:
+    - set_fact:
+        http_monitors:
+          - name: "na1-auction_http-health-monitor"
+            url: "http://na1-auction.{{ zone }}"
+          - name: "na2-auction_http-health-monitor"
+            url: "https://na2-auction.{{ zone }}"
+          - name: "eap_http-health-monitor"
+            url: "https://{{ eap_uri }}"
+          - name: "eap-cf_http-health-monitor"
+            url: "https://{{ eap_uri_cf }}"
+          - name: "eap-direct_http-health-monitor"
+            url: "https://{{ eap_uri_direct }}"
+          - name: "na3-auction_http-health-monitor"
+            url: "https://na3-auction.{{ zone }}"
+          - name: "big-ip_http-health-monitor"
+            url: "http://na4-auction.{{ zone }}"
+          - name: "na5-auction_http-health-monitor"
+            url: "http://na5-auction.{{ zone }}"
+          - name: "eu1-auction_http-health-monitor"
+            url: "http://eu1-auction.{{ zone }}"
+          - name: "au-auction_http-health-monitor"
+            url: "http://au-auction.{{ zone }}"
+          - name: "auction_http-health-monitor"
+            url: "http://auction.{{ zone }}"
+        dns_monitors:
+          - name: "auction_dns-health-monitor"
+            domain: "auction.{{ zone }}"
+
+    - name: Get Beacon Auth
+      uri:
+        url: "{{csAPI}}/v1/svc-auth/login"
+        method: POST
+        body_format: json
+        body:
+          username: "{{ beacon_un }}"
+          password: "{{ beacon_pw }}"
+      register: authtoken
+      delegate_to: localhost
+
+    - name: Get User
+      uri:
+        url: "{{csAPI}}/v1/svc-account/user"
+        method: GET
+        headers:
+          Content-Type: application/json
+          Authorization: "Bearer {{ authtoken.json.access_token }}"
+          X-F5aas-Preferred-Account-Id: "{{ beacon_acct }}"
+      register: user_response
+      delegate_to: localhost
+
+    - name: Seting User Id
+      set_fact:
+        user_id: "{{ user_response.json.id }}"
+
+    - name: Create Ingest Token
+      uri:
+        url: "{{csAPI}}/beacon/v1/telemetry-token"
+        method: POST
+        body_format: json
+        headers:
+          Content-Type: application/json
+          Authorization: "Bearer {{ authtoken.json.access_token }}"
+          X-F5aas-Preferred-Account-Id: "{{ beacon_acct }}"
+        body:
+          name: telegrafToken
+          description: Token for Telegraf telemetry
+      register: telegraf_token_response
+      delegate_to: localhost
+
+    - set_fact:
+        telegraf_token: "{{ telegraf_token_response.json.accessToken }}"
+
+    - name: Create Ingest Token
+      uri:
+        url: "{{csAPI}}/beacon/v1/telemetry-token"
+        method: POST
+        body_format: json
+        headers:
+          Content-Type: application/json
+          Authorization: "Bearer {{ authtoken.json.access_token }}"
+          X-F5aas-Preferred-Account-Id: "{{ beacon_acct }}"
+        body:
+          name: BIG-IP_token
+          description: Token for BIG-IP telemetry
+      register: bigip_token_response
+      delegate_to: localhost
+
+    - set_fact:
+        bigip_token: "{{ bigip_token_response.json.accessToken }}"
+
+    - name: Register tokens
+      uri:
+        url: "http://34.222.92.158:9090/token/register"
+        method: POST
+        body_format: json
+        headers:
+          Content-Type: application/json
+        body:
+          accountId: "{{ beacon_acct }}"
+          telegrafToken: "{{ telegraf_token }}"
+          bigipToken: "{{ bigip_token }}"
+          description: "{{ beacon_un }}"
+        status_code: 201
+      delegate_to: localhost
+
+    - name: Create HTTP Monitors
+      uri:
+        url: "{{csAPI}}/beacon/v1/declare"
+        method: POST
+        body_format: json
+        headers:
+          Content-Type: application/json
+          Authorization: "Bearer {{ authtoken.json.access_token }}"
+          X-F5aas-Preferred-Account-Id: "{{ beacon_acct }}"
+        body: "{{ lookup('template', './beacon/monitors/http_monitor.j2') }}"
+        status_code: 202
+      delegate_to: localhost
+      loop: "{{ http_monitors }}"
+
+    - name: Create DNS Monitors
+      uri:
+        url: "{{csAPI}}/beacon/v1/declare"
+        method: POST
+        body_format: json
+        headers:
+          Content-Type: application/json
+          Authorization: "Bearer {{ authtoken.json.access_token }}"
+          X-F5aas-Preferred-Account-Id: "{{ beacon_acct }}"
+        body: "{{ lookup('template', './beacon/monitors/dns_monitor.j2') }}"
+        status_code: 202
+      delegate_to: localhost
+      loop: "{{ dns_monitors }}"
+
+    - name: Create Insights
+      uri:
+        url: "{{csAPI}}/beacon/v1/insights"
+        method: POST
+        body_format: json
+        headers:
+          Content-Type: application/json
+          Authorization: "Bearer {{ authtoken.json.access_token }}"
+          X-F5aas-Preferred-Account-Id: "{{ beacon_acct }}"
+        body: "{{ lookup('file', item) }}"
+      delegate_to: localhost
+      loop: "{{ lookup('fileglob', 'beacon/insights/*', wantlist=True) }}"
+
+    - name: Create Apps
+      uri:
+        url: "{{csAPI}}/beacon/v1/declare"
+        method: POST
+        body_format: json
+        headers:
+          Content-Type: application/json
+          Authorization: "Bearer {{ authtoken.json.access_token }}"
+          X-F5aas-Preferred-Account-Id: "{{ beacon_acct }}"
+        body: "{{ lookup('file', item) }}"
+        status_code: 202
+      delegate_to: localhost
+      loop: "{{ lookup('fileglob', 'beacon/apps/*', wantlist=True) }}"
+
+    - name: Sleep for 5 seconds and continue with play
+      wait_for:
+        timeout: 5
+      delegate_to: localhost
+
+    - name: Get Beacon Apps
+      uri:
+        url: "{{csAPI}}/beacon/v1/applications"
+        method: GET
+        headers:
+          Content-Type: application/json
+          Authorization: "Bearer {{ authtoken.json.access_token }}"
+          X-F5aas-Preferred-Account-Id: "{{ beacon_acct }}"
+      register: beacon_apps_response
+      delegate_to: localhost
+
+    - name: Map application ids
+      set_fact:
+        beacon_apps: "{{ beacon_apps_response.json.apps | items2dict(key_name='name', value_name='id') }}"
+
+    - name: Create temporary dashboards directory
+      tempfile:
+        state: directory
+        prefix: dashboards
+      register: dashboards_dir
+
+    - name: Set templatized Dashboards
+      template:
+        src: "{{ item }}"
+        dest: "{{ dashboards_dir.path }}/{{ item.split('/')[-1] }}"
+        force: yes
+      loop: "{{ lookup('fileglob', './templates/beacon/dashboards/*', wantlist=True) }}"
+
+    - name: Create Dashboards
+      uri:
+        url: "{{csAPI}}/beacon/v1/dashboards"
+        method: POST
+        body_format: json
+        headers:
+          Content-Type: application/json
+          Authorization: "Bearer {{ authtoken.json.access_token }}"
+          X-F5aas-Preferred-Account-Id: "{{ beacon_acct }}"
+        body: "{{ lookup('file', item) }}"
+      delegate_to: localhost
+      loop: "{{ lookup('fileglob', '{{ dashboards_dir.path }}/*', wantlist=True) }}"
+
+    - name: Create temporary integrations directory
+      tempfile:
+        state: directory
+        prefix: dashboards
+      register: integrations_dir
+
+    - name: Set templatized Integrations
+      template:
+        src: "{{ item }}"
+        dest: "{{ integrations_dir.path }}/{{ item.split('/')[-1] }}"
+        force: yes
+      loop: "{{ lookup('fileglob', './templates/beacon/integrations/*', wantlist=True) }}"
+
+    - name: Create Integrations Monitors
+      uri:
+        url: "{{csAPI}}/beacon/v1/monitors"
+        method: POST
+        body_format: json
+        headers:
+          Content-Type: application/json
+          Authorization: "Bearer {{ authtoken.json.access_token }}"
+          X-F5aas-Preferred-Account-Id: "{{ beacon_acct }}"
+        body: "{{ lookup('file', item) }}"
+        status_code: 200
+      delegate_to: localhost
+      loop: "{{ lookup('fileglob', '{{ integrations_dir.path }}/*', wantlist=True) }}"

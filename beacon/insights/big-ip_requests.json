@@ -1,0 +1,49 @@
+{
+  "title": "Big-IP Requests",
+  "description": "",
+  "category": "INS_CAT_OPERATIONS",
+  "severity": "INS_SEV_NONE",
+  "appNames": [],
+  "appComponents": [],
+  "metrics": [
+    {
+      "measurement": "nginx",
+      "tags": [
+        {
+          "key": "internal_name",
+          "values": [
+            "na4-auction"
+          ]
+        }
+      ],
+      "field": "requests_diff",
+      "function": "max",
+      "metricName": "api-requests"
+    },
+    {
+      "measurement": "nginx",
+      "tags": [
+        {
+          "key": "host",
+          "values": [
+            "na4"
+          ]
+        },
+        {
+          "key": "server",
+          "values": [
+            "auction-gateway"
+          ]
+        }
+      ],
+      "field": "requests_diff",
+      "function": "mean",
+      "metricName": "ui-requests"
+    }
+  ],
+  "visualizationType": "VISUALIZATION_TYPE_STACKED_AREA",
+  "period": "1d",
+  "analysis": null,
+  "healthStatus": "NONE",
+  "healthStatusReason": ""
+}
